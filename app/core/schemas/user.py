@@ -36,6 +36,6 @@ class UserUpdate(BaseSchema):
     last_name: Optional[str] = None
     middle_name: Optional[str] = None
 
-    is_active: Optional[bool] = True
-    is_staff: Optional[bool] = False
-    is_superuser: Optional[bool] = False
+    is_active: Optional[bool] = None
+    is_staff: Optional[bool] = None
+    is_superuser: Optional[bool] = None
