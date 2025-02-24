@@ -7,3 +7,4 @@ from dotenv import load_dotenv # читает env файл и читает из 
 
 load_dotenv()
 DB_URL = os.getenv("DB_URL")
+DB_ECHO = os.getenv("DB_ECHO")

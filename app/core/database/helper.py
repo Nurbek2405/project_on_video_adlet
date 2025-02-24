@@ -2,15 +2,15 @@
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from app.core.config import DB_URL
+from app.core.config import DB_URL, DB_ECHO
 
-engine = create_engine(
+engine = create_engine(   #
     url = DB_URL,
-    echo=False,
+    echo = DB_ECHO, # TRUE чтобы выходило в консоль?
 )
 
-Session = sessionmaker(bind=engine)
+SessionLocal = sessionmaker(bind=engine)  # привязаны к мостику
 
-def get_session():
-    with Session() as session:
-        yield session
+def get_session():       # создаем
+    with SessionLocal() as session:    # обращаемся и делаем сессию
+        yield session                  # создает сессию, пользуемся сессией в памяти, как закончим, что надо удалять из памяти
