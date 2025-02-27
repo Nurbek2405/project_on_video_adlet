@@ -1,17 +1,25 @@
-# помогает подключиться к базе данных
-
+from app.core.config import settings  # Импортируем настройки
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from app.core.config import DB_URL, DB_ECHO
 
+# Отладочная информация
+print("Loading database configuration...")
+print("DB_URL:", settings.DB_URL)
+print("DB_ECHO:", settings.DB_ECHO)
 
-engine = create_engine(   #
-    url = DB_URL,
-    echo = DB_ECHO, # TRUE чтобы выходило в консоль?
+if not settings.DB_URL:
+    raise ValueError("DB_URL is not set. Please check your .env file.")
+
+# Создание движка SQLAlchemy
+engine = create_engine(
+    url=settings.DB_URL,
+    echo=settings.DB_ECHO,
 )
 
-SessionLocal = sessionmaker(bind=engine)  # привязаны к мостику
+# Фабрика сессий
+SessionLocal = sessionmaker(bind=engine)
 
-def get_session():       # создаем
-    with SessionLocal() as session:    # обращаемся и делаем сессию
-        yield session                  # создает сессию, пользуемся сессией в памяти, как закончим, что надо удалять из памяти
+# Функция для получения сессии
+def get_session():
+    with SessionLocal() as session:
+        yield session

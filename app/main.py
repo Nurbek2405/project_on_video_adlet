@@ -1,10 +1,11 @@
 from fastapi import FastAPI
-from app.core.config import DB_URL
+import uvicorn
+from app.apis.api_v1.user import router as user_router
 
-print(DB_URL)  # Должно вывести значение DB_URL
 
 app = FastAPI()
 
-@app.get("/")
-def read_root():
-    return {"db_url": DB_URL}
+app.include_router(user_router)
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)

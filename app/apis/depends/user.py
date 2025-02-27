@@ -1,5 +1,4 @@
 from app.core.services.user import UserService
-from app.core.models.user import User
 from fastapi import Depends
 from typing import Annotated
 from sqlalchemy.orm import Session
