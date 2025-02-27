@@ -4,7 +4,7 @@ from app.core.services.user import UserService
 from app.apis.depends.user import get_user_service
 from app.core.schemas.user import UserCreate
 
-router = APIRouter(prefix="/user111", tags=["User111"])
+router = APIRouter(prefix="/user344334", tags=["User"])
 
 @router.post("/")
 def user_create(
