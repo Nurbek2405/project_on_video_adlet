@@ -6,6 +6,10 @@ from fastapi import HTTPException
 # API -> Service -> Repo хранить бизнес логику, калькуляцию к примеру (ответы тестов пришли, и внутри сервиса,
 # и на сколько ответили правильно и неправильно все тут, и конечный результат тоже будем писать тут
 
+# user depency -> get_user_service -> service,
+# get_curent_user
+# get_admin_user для прав админа
+
 class UserService:
     def __init__(self, repository: UserRepo) -> None:
         self.repository = repository
